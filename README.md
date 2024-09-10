@@ -68,9 +68,10 @@ https://youtube.com/shorts/RbIMU7LPCtI?feature=share
 Pics of completed unit
 ![image](https://github.com/user-attachments/assets/f32bee49-dd9b-4aea-bb2d-00c6b2aa4da7)
 
-![image](https://github.com/user-attachments/assets/566d92d4-a960-4eae-af3e-0d30dfdbe46d)
 
 ![image](https://github.com/user-attachments/assets/8561f9f5-886b-4094-a6d8-accedc723aae)
+
+
 ![image](https://github.com/user-attachments/assets/80f730f9-bc82-41a7-a972-e9d7c23d2199)
 
 
