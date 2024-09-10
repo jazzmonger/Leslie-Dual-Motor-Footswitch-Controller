@@ -40,7 +40,16 @@ script:
         condition:
           binary_sensor.is_off: footswitch
         then:          
-            - logger.log: "stop mode detected"  
+            - logger.log: "stop mode detected"
+
+![image](https://github.com/user-attachments/assets/f094ae31-d69b-446e-a108-a07702a99623)
+
+![image](https://github.com/user-attachments/assets/7ee916dc-4084-46f8-8fc0-0c27c0a78ac3)
+
+![image](https://github.com/user-attachments/assets/bccbf892-a5e3-4fd9-8890-29cb3cb6bbe5)
+
+
+
             - switch.turn_off: fastmotor            
             - switch.turn_off: slowmotor
 ```
