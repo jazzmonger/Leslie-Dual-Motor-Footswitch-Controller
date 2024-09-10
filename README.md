@@ -56,3 +56,4 @@ script:
 So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. With stop function.  Open Source.
 Enjoy!
 
+![image](https://github.com/user-attachments/assets/8561f9f5-886b-4094-a6d8-accedc723aae)
