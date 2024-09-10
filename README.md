@@ -5,7 +5,7 @@ I love Leslies.  I've had dozens of them over the years.  My favs are the 146's 
 
 Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind at the time, I just didnt know what until now.  What if I used an ESP8266 and programmed it with ESPHome to enable full control?  OK... But... Inductive interference from thre motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's.  OK let's try it!
 
-So, I wired it up, and I noticed immediatly the outputs needed to be pulled up to 5v w/ 100 ohm resistors so the solid state relay would trigger.  When the GPIO is low, at 1.2v 100 ohm resistos will have to sink 0.012A. 0.012A  * 1.2v = 0.012w.  No problem.
+So, I wired it up, added a 3.3v to 5v level shifter to the outputs, and I noticed immediatly tha even w/ the level shifter, the outputs needed to be pulled up to 5v w/ 100 ohm resistors so the solid state relay would trigger.  When the GPIO is low, at 1.2v 100 ohm resistos will have to sink 0.012A. 0.012A  * 1.2v = 0.012w.  No problem.
 
 ok, lets work on the logic.  Initially I used the "toggle" output function, but then thought what if the 2 outputs (slow motor, fast motor) get out of sync?  they could be both on, or both off.  So, I opted to explicitily set the speeds:
 ```
