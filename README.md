@@ -1,7 +1,7 @@
 # lesliefootswitch
 Leslie Dual Motor foot switch speed control
 
-I love Leslies.  I've had dozens of them over the years.  My favs are the 146's and 122's, and the 46w is equally good.  But.... I to control them, I like a momentary on/off foot switch that varies the speed.  And, Ideally, allows the OFF function to stop both motors. Jimm McGriff and other artists used the OFF function to great effect.  So, how do we do this?  I started with a 555 time circuit that "sort of worked", but hook up a highly inductive load like a leslie motor to the relay and all hell broke loose.  Not to mention the CLICK of the relay. How do we get rid of the mechanical relay, add slow/fast AND OFF switching?  Read on.
+I love Leslies.  I've had dozens of them over the years.  My favs are the 146's and 122's, and the 46w is equally good.  But....  to control them, I like a momentary on/off foot switch that varies the speed - like on My Hammond XK5 and Leslie 3300.  I know, I know.  Clonewheel + new Leslie.  The sound is close, but not ideal.  So I need to add a REAL leslie to the picture.  And, Ideally, one that allows the OFF function to stop both motors. Jimmy McGriff and other artists used the OFF function on the Leslie to great effect.  So, how do we do this?  I started experimenting with a 555 time circuit that "sort of worked", but hook up a highly inductive load like a leslie motor to the relay and all hell broke loose. I couldnt mitigate the interference.   Not to mention the loud CLICK of the typical relay. How do we get rid of the mechanical relay, add slow/fast AND OFF switching?  Read on.
 
 Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind at the time, I just didnt know what until now.  What if I used an ESP8266 and programmed it with ESPHome to enable full control?  OK... But... Inductive interference from thre motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's.  OK let's try it!
 
@@ -44,6 +44,7 @@ script:
             - switch.turn_off: fastmotor            
             - switch.turn_off: slowmotor
 ```
+several other mods in the config file mitigate having no Wifi. setting startup speeds upon boot, etc.  Good thing I've got lots of ESPHome experience w/ my Pellet stove! 
 So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. With stop function.  Open Source.
 Enjoy!
 ![image](https://github.com/user-attachments/assets/f32bee49-dd9b-4aea-bb2d-00c6b2aa4da7)
