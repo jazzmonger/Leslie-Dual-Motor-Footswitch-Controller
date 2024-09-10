@@ -41,19 +41,16 @@ script:
           binary_sensor.is_off: footswitch
         then:          
             - logger.log: "stop mode detected"
-
-![image](https://github.com/user-attachments/assets/f094ae31-d69b-446e-a108-a07702a99623)
-
-![image](https://github.com/user-attachments/assets/7ee916dc-4084-46f8-8fc0-0c27c0a78ac3)
-
-![image](https://github.com/user-attachments/assets/bccbf892-a5e3-4fd9-8890-29cb3cb6bbe5)
-
-
-
             - switch.turn_off: fastmotor            
             - switch.turn_off: slowmotor
 ```
 So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. With stop function.  Open Source.
 Enjoy!
+![image](https://github.com/user-attachments/assets/f32bee49-dd9b-4aea-bb2d-00c6b2aa4da7)
+
+![image](https://github.com/user-attachments/assets/566d92d4-a960-4eae-af3e-0d30dfdbe46d)
 
 ![image](https://github.com/user-attachments/assets/8561f9f5-886b-4094-a6d8-accedc723aae)
+![image](https://github.com/user-attachments/assets/80f730f9-bc82-41a7-a972-e9d7c23d2199)
+
+
