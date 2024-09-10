@@ -59,11 +59,6 @@ https://youtu.be/mhJRgmhaKl0
 video of Motor in action
 https://youtube.com/shorts/RbIMU7LPCtI?feature=share
 
-
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/mhJRgmhaKl0/0.jpg)](http:/https://youtu.be/mhJRgmhaKl0 "Video Title")
-
-
-
 ![image](https://github.com/user-attachments/assets/f32bee49-dd9b-4aea-bb2d-00c6b2aa4da7)
 
 ![image](https://github.com/user-attachments/assets/566d92d4-a960-4eae-af3e-0d30dfdbe46d)
