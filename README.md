@@ -53,7 +53,7 @@ Good thing I've got loads of ESPHome experience w/ my Pellet stove!
 So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. With stop function.  Open Source.
 Enjoy!
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/v=mhJRgmhaKl0/0.jpg)](http://www.youtube.com/watch?v=v=mhJRgmhaKl0 "Video Title")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/mhJRgmhaKl0/0.jpg)](http://www.youtube.com/watch?mhJRgmhaKl0 "Video Title")
 
 ?v=mhJRgmhaKl0
 
