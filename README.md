@@ -1,8 +1,7 @@
 # lesliefootswitch
 Leslie Dual Motor foot switch speed control
 
-<img width="200" alt="image" src="https://github.com/user-attachments/assets/5ffa6505-e3ad-4f38-842d-050278efdd07">
-<img  alt="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lesliebox_Animation.gif?20070728184739">
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/5ffa6505-e3ad-4f38-842d-050278efdd07"> <img  width="300" alt="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lesliebox_Animation.gif?20070728184739">
 
 I love Leslies.  I've had dozens of them over the years.  My favs are the 146's and 122's, and the 46w is equally good.  But....  to control them, I like a momentary on/off foot switch that varies the speed and also stops the motors completely - like on My Hammond XK5 and Leslie 3300.  I know, I know.  Clonewheel + new Leslie.  The sound is close, but not ideal.  So I need to add another REAL leslie to the picture.  And, Ideally, one that allows the OFF function to stop both motors. Jimmy McGriff and other artists used the OFF function on the Leslie to great effect.  So, how do we do this?  I started experimenting with a 555 timer circuit that "sort of worked", but when I hooked up a highly inductive load like a leslie motor to the miniture relay, all hell broke loose. I couldnt mitigate the interference.   Not to mention the loud CLICK of the typical relay. 
 
