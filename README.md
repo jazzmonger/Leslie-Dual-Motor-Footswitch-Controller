@@ -54,8 +54,8 @@ So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. Wi
 Enjoy!
 
 Link to the Solid State AC relay controlled with 5v
-
 <img width="339" alt="image" src="https://github.com/user-attachments/assets/3d40e132-72b9-4373-beb9-d3c12664a22a">
+
 https://czh-labs.com/products/electronics-salon-dc5v-2-channels-dc-ac-2amp-g3mb-202p-solid-state-relay-ssr-module-board
 
 video of Controller in action
