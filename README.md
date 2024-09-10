@@ -53,12 +53,16 @@ Good thing I've got loads of ESPHome experience w/ my Pellet stove!
 So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. With stop function.  Open Source.
 Enjoy!
 
+Link to the Solid State AC relay controlled with 5v
+https://czh-labs.com/products/electronics-salon-dc5v-2-channels-dc-ac-2amp-g3mb-202p-solid-state-relay-ssr-module-board
+
 video of Controller in action
 https://youtu.be/mhJRgmhaKl0
 
 video of Motor in action
 https://youtube.com/shorts/RbIMU7LPCtI?feature=share
 
+Pics of completed unit
 ![image](https://github.com/user-attachments/assets/f32bee49-dd9b-4aea-bb2d-00c6b2aa4da7)
 
 ![image](https://github.com/user-attachments/assets/566d92d4-a960-4eae-af3e-0d30dfdbe46d)
