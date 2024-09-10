@@ -60,7 +60,7 @@ Link to the Solid State AC relay controlled with 5v
 https://czh-labs.com/products/electronics-salon-dc5v-2-channels-dc-ac-2amp-g3mb-202p-solid-state-relay-ssr-module-board
 
 video of Controller in action
-https://youtu.be/mhJRgmhaKl0
+https://youtu.be/TsYa0EK1uks
 
 video of Motor in action
 https://youtube.com/shorts/RbIMU7LPCtI?feature=share
