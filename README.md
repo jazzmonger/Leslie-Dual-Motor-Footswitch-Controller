@@ -1,4 +1,3 @@
-l# lesliefootswitch
 Leslie Dual Motor foot switch speed control
 
 <img width="200" alt="image" src="https://github.com/user-attachments/assets/5ffa6505-e3ad-4f38-842d-050278efdd07"> <img  width="300" alt="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lesliebox_Animation.gif?20070728184739">
