@@ -65,7 +65,9 @@ https://www.amazon.com/dp/B0079WI2ZC?ref=fed_asin_title
 
 
 video of Motor in action
-https://share.icloud.com/photos/011Lfs6CKnbBLDajxq2qel_-Q
+https://youtube.com/shorts/yKDL8vKTTh8?feature=share
+<img width="100" alt="image" src="https://github.com/user-attachments/assets/d404a2ec-5a46-47b8-8777-807fee2db2e2">
+
 
 Pics of completed unit
 ![image](https://github.com/user-attachments/assets/28257a7e-4166-48bb-aa41-3e095643bd33)
