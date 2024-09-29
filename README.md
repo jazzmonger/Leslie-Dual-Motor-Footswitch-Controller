@@ -1,4 +1,4 @@
-# lesliefootswitch
+l# lesliefootswitch
 Leslie Dual Motor foot switch speed control
 
 <img width="200" alt="image" src="https://github.com/user-attachments/assets/5ffa6505-e3ad-4f38-842d-050278efdd07"> <img  width="300" alt="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lesliebox_Animation.gif?20070728184739">
@@ -13,6 +13,7 @@ So, I wired it up, added a 3.3v to 5v level shifter to the outputs, and I notice
 
 UPDATE: I just got the updated version of the SS relay board and it now has transistor drivers on it.  it works like a champ, directly connected to the GPIO outs of the 8266.
 
+![image](https://github.com/user-attachments/assets/2d34f49e-0abb-4718-b9a5-f9e02b148c6b)
 
 
 ok, lets work on the logic.  Initially I used the "toggle" output function to control the switching of the GPIO's, but then thought what if the 2 outputs (slow motor, fast motor) get out of sync?  they could be both on, or both off. not ideal.  So, I opted to explicitily set the speeds when the foot switch is activated:
@@ -57,11 +58,11 @@ Good thing I've got loads of ESPHome experience w/ my Pellet stove!
 So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. With stop function.  Open Source.
 Enjoy!
 
-Link to the Solid State AC relay controlled with 5v
+Link to the SainSmart 5V 2-Channel Solid State Relay Board controlled with 5v
+https://www.amazon.com/dp/B0079WI2ZC?ref=fed_asin_title
 
-<img width="339" alt="image" src="https://github.com/user-attachments/assets/3d40e132-72b9-4373-beb9-d3c12664a22a">
+![image](https://github.com/user-attachments/assets/dd387b88-90e4-41a6-ae7a-23c24b7739c1)
 
-https://czh-labs.com/products/electronics-salon-dc5v-2-channels-dc-ac-2amp-g3mb-202p-solid-state-relay-ssr-module-board
 
 video of Controller in action
 https://youtu.be/TsYa0EK1uks
@@ -70,12 +71,7 @@ video of Motor in action
 https://youtube.com/shorts/RbIMU7LPCtI?feature=share
 
 Pics of completed unit
-![image](https://github.com/user-attachments/assets/f32bee49-dd9b-4aea-bb2d-00c6b2aa4da7)
+![image](https://github.com/user-attachments/assets/28257a7e-4166-48bb-aa41-3e095643bd33)
 
-
-![image](https://github.com/user-attachments/assets/8561f9f5-886b-4094-a6d8-accedc723aae)
-
-
-![image](https://github.com/user-attachments/assets/80f730f9-bc82-41a7-a972-e9d7c23d2199)
 
 
