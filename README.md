@@ -64,11 +64,8 @@ https://www.amazon.com/dp/B0079WI2ZC?ref=fed_asin_title
 ![image](https://github.com/user-attachments/assets/dd387b88-90e4-41a6-ae7a-23c24b7739c1)
 
 
-video of Controller in action
-https://youtu.be/TsYa0EK1uks
-
 video of Motor in action
-https://youtube.com/shorts/RbIMU7LPCtI?feature=share
+https://share.icloud.com/photos/011Lfs6CKnbBLDajxq2qel_-Q
 
 Pics of completed unit
 ![image](https://github.com/user-attachments/assets/28257a7e-4166-48bb-aa41-3e095643bd33)
