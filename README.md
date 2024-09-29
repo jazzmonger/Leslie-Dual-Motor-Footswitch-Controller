@@ -7,9 +7,13 @@ I love Leslies.  I've had dozens of them over the years.  My favs are the 146's 
 
 so, How do we get rid of the mechanical relay for totally silent speed switching, and add reliable slow/fast AND OFF switching?  Read on.
 
-Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind for my Lslies at the time, I just didnt know what until now.  What if I used a programmable micro controller like a cheap, readily available ESP8266 and then programmed it with ESPHome to enable full control of the motoors?  OK... But... What about Inductive interference from the motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's. through ckever programming.  OK let's try it!
+Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind for my Lslies at the time, I just didnt know what until now.  What if I used a programmable micro controller like a cheap, readily available ESP8266 and then programmed it with ESPHome to enable full control of the motors?  OK... But... What about Inductive interference from the motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's. through ckever programming.  OK let's try it!
 
 So, I wired it up, added a 3.3v to 5v level shifter to the outputs, and I noticed immediatly that even w/ the level shifter, the outputs both needed to be pulled up to 5v w/ 100 ohm resistors so the solid state relay would trigger when the GPIO's go high.  When the GPIO is low, at 1.2v 100 ohm 0.25w resistors will have to sink 0.012A. 0.012A  * 1.2v = 0.012w.  No problem.
+
+UPDATE: I just got the updated version of the SS relay board and it now has transistor drivers on it.  it works like a champ, directly connected to the GPIO outs of the 8266.
+
+
 
 ok, lets work on the logic.  Initially I used the "toggle" output function to control the switching of the GPIO's, but then thought what if the 2 outputs (slow motor, fast motor) get out of sync?  they could be both on, or both off. not ideal.  So, I opted to explicitily set the speeds when the foot switch is activated:
 ```
