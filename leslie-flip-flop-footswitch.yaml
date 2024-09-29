@@ -83,7 +83,8 @@ switch:
     id: led
     pin: GPIO2
     inverted: True
-
+    
+#dummy sw to detect stop function
   - platform: gpio
     id: stop
     pin: GPIO12
@@ -116,7 +117,7 @@ ota:
   - platform: esphome
 
 wifi:
-  enable_on_boot: false
+  enable_on_boot: false # set to true while degugging
   reboot_timeout: 0s
   ssid: !secret wifi_ssid
   password: !secret wifi_password
