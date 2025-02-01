@@ -62,6 +62,7 @@ Enjoy!
 
 Link to the SainSmart 5V 2-Channel Solid State Relay Board controlled with 5v
 https://www.amazon.com/dp/B0079WI2ZC?ref=fed_asin_title
+UPDATE: these work with only SOME leslie motors. Most others require the non-zero cross version. SSR numer ends in PL 202-PL
 
 ![image](https://github.com/user-attachments/assets/dd387b88-90e4-41a6-ae7a-23c24b7739c1)
 
