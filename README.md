@@ -65,7 +65,7 @@ Enjoy!
 Link to the SainSmart 5V 2-Channel Solid State Relay Board controlled with 5v
 https://www.amazon.com/dp/B0079WI2ZC?ref=fed_asin_title
 
-UPDATE: these realy modules only work with SOME leslies that use DC motors. Most others (147,122,etc) require the non-zero cross version because those motors are INDUCTIVE MOTORS. The SSR part numberfor those ends in PL (202-PL).  The board logic works, all you have to do is replace the 202P relays with the 202PL relays.  They are the same footprint so they are direct replacements. 
+UPDATE: these relay modules only work with SOME leslies that use DC motors. Most others (147,122,etc) require the non-zero cross version because those motors are INDUCTIVE MOTORS. The SSR part numberfor those ends in PL (202-PL).  The board logic works, all you have to do is replace the 202P relays with the 202PL relays.  They are the same footprint so they are direct replacements. 
 
 ![image](https://github.com/user-attachments/assets/dd387b88-90e4-41a6-ae7a-23c24b7739c1)
 
