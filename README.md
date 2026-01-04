@@ -9,7 +9,7 @@ I love Leslies.  I've had dozens of them over the years.  My favs are the 146's 
 
 so, How do we get rid of the mechanical relay for totally silent speed switching, and add reliable slow/fast AND OFF switching?  Read on.
 
-Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind for my Lslies at the time, I just didnt know what until now.  What if I used a programmable micro controller like a cheap, readily available ESP8266 and then programmed it with ESPHome to enable full control of the motors?  OK... But... What about Inductive interference from the motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's. through ckever programming.  OK let's try it!
+Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind for my Lslies at the time, I just didnt know what until now.  What if I used a programmable micro controller like a cheap, readily available ESP8266 and then programmed it with ESPHome to enable full control of the motors?  OK... But... What about Inductive interference from the motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's through clever programming.  OK let's try it!
 
 So, I wired it up, added a 3.3v to 5v level shifter to the outputs, and I noticed immediatly that even w/ the level shifter, the outputs both needed to be pulled up to 5v w/ 100 ohm resistors so the solid state relay would trigger when the GPIO's go high.  When the GPIO is low, at 1.2v 100 ohm 0.25w resistors will have to sink 0.012A. 0.012A  * 1.2v = 0.012w.  No problem.
 
@@ -57,16 +57,17 @@ script:
 ```
 several other mods in the config file mitigate having no Wifi and setting startup speeds upon boot, etc.  
 Good thing I've got loads of ESPHome experience w/ my Pellet stove! 
-So, there you have it.  A footswitch enabled 2 speed Leslie motor controller. With stop function.  Open Source.
+So, there you have it.  
+
+A footswitch enabled 2 speed Solid State Leslie motor controller. With stop function.  Open Source.
 Enjoy!
 
 Link to the SainSmart 5V 2-Channel Solid State Relay Board controlled with 5v
 https://www.amazon.com/dp/B0079WI2ZC?ref=fed_asin_title
 
-UPDATE: these work with only SOME leslie motors. Most others require the non-zero cross version. SSR numer ends in PL 202-PL.  the board logic works, all you have to do is replace the relays.  they are the same footprint.
+UPDATE: these realy modules only work with SOME leslies that use DC motors. Most others (147,122,etc) require the non-zero cross version because those motors are INDUCTIVE MOTORS. The SSR part numberfor those ends in PL (202-PL).  The board logic works, all you have to do is replace the 202P relays with the 202PL relays.  They are the same footprint so they are direct replacements. 
 
 ![image](https://github.com/user-attachments/assets/dd387b88-90e4-41a6-ae7a-23c24b7739c1)
-
 
 video of Motor in action
 
