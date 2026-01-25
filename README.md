@@ -79,5 +79,7 @@ https://youtube.com/shorts/yKDL8vKTTh8?feature=share
 Pics of completed unit
 ![image](https://github.com/user-attachments/assets/28257a7e-4166-48bb-aa41-3e095643bd33)
 
+UPDATE: Ive been using 2 of these controllers successfully for several months now.  One is in a converted 46W and is completely silent.  The other is in a 147 and had a slight motor click when changing speeds. I added a 0.1uf cap across both the slow and fast motor wiring and that completely eliminated the pops & clicks.  Easy fix!
+
 
 
