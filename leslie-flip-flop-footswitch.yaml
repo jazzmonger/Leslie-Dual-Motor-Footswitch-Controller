@@ -1,88 +1,152 @@
-script:
-  - id: checkforstop
-    mode: restart                   
+esphome:
+  name: leslie-flip-flop-footswitch
+  friendly_name: Leslie Flip Flop footswitch
+  on_boot:
+    priority: -10 # Ensures logging is ready before running
+    then:  
+      - logger.log: "Booting: Setting initial motor states"
+      - switch.turn_on: slowmotor
+      - switch.turn_off: fastmotor
+      - switch.turn_off: led
+
+esp8266:
+  board: esp01_1m
+
+# VERY_VERBOSE floods UART; on ESP8266 that can starve the main loop and trip the hardware WDT.
+logger:
+  level: DEBUG
+
+api:
+ota:
+  - platform: esphome
+
+debug:
+  update_interval: 10sec
+
+web_server:
+  local: True
+
+wifi:
+  reboot_timeout: 0s
+  ssid: "Van Slyke"
+  password: !secret wifi_password
+  ap:
+    ap_timeout: 10s
+    ssid: "Leslie-Flip-Flop-Footswitch"
+    password: !secret wifi_password
+
+captive_portal:
+
+# Replaces script mode: restart + delay (rapid releases could churn scripts and contribute to WDT).
+globals:
+  - id: stop_idle_pending
+    type: bool
+    initial_value: "false"
+  - id: stop_idle_started
+    type: uint32_t
+    initial_value: "0"
+
+interval:
+  - interval: 100ms
     then:
-    - logger.log: "script CheckForStop running"
-    - delay: 2s
-    - if:
-        condition:
-          binary_sensor.is_off: footswitch
-        then:          
-            - logger.log: "STOP MODE ON"  
-            - switch.turn_on: stop                
-            - switch.turn_off: fastmotor            
-            - switch.turn_off: slowmotor               
-            - switch.turn_off: led         
-            - switch.turn_off: lamp               
+      - if:
+          condition:
+            and:
+              - lambda: "return id(stop_idle_pending);"
+              - binary_sensor.is_off: footswitch
+              - lambda: "return (millis() - id(stop_idle_started)) >= 2000;"
+              - switch.is_off: stop
+          then:
+            - globals.set:
+                id: stop_idle_pending
+                value: "false"
+            - logger.log: "ACTION: Entering STOP MODE"
+            - switch.turn_on: stop
+            - switch.turn_off: fastmotor
+            - switch.turn_off: slowmotor
+            - switch.turn_off: led
+            - switch.turn_off: lamp
 
 binary_sensor:
   - platform: gpio
     name: "Footswitch"  
     id: footswitch
     pin: 
-      number: GPIO13 #D7
+      number: GPIO13
       mode:
         input: true
         pullup: true
     filters:
-      - debounce: 0.1 #Only send values if the last incoming value is at least specified time period old
+      # Sliders debounce the raw GPIO so press/release events are not spammed
+      - delayed_on: !lambda "return id(debounce_on_time).state;"
+      - delayed_off: !lambda "return id(debounce_off_time).state;"
     on_press:    
-       then:
+      then:
+        - logger.log: "Footswitch Pressed"
+        - globals.set:
+            id: stop_idle_pending
+            value: "false"
         - switch.turn_off: led
     on_release:
-       then:
-        - script.execute: checkforstop
+      then:
+        - logger.log: "Footswitch Released"
+        - globals.set:
+            id: stop_idle_started
+            value: !lambda "return millis();"
+        - globals.set:
+            id: stop_idle_pending
+            value: "true"
         - switch.turn_on: led
-#coming out of stop,ALWAYS go to SLOW mode              
-
         - if:
             condition:
-              - and: 
-                - switch.is_on: fastmotor              
-                - switch.is_off: stop
+              switch.is_on: stop
             then:
-              - logger.log: "SLOW MODE" 
+              - logger.log: "LOGIC: EXITING STOP -> SLOW" 
+              - switch.turn_off: stop
               - switch.turn_off: fastmotor 
-              - switch.turn_off: lamp      
-              - logger.log: "LAMP OFF SLOW MODE"   
+              - switch.turn_off: lamp   
               - delay: 50ms      
               - switch.turn_on: slowmotor                         
-            else:           
-              - logger.log: "FAST MODE" 
-              - switch.turn_off: slowmotor
-              - delay: 50ms
-              - switch.turn_on: fastmotor             
-              - switch.turn_on: lamp
+            else:
+              - if:
+                  condition:
+                    switch.is_on: fastmotor
+                  then:
+                    - logger.log: "LOGIC: TOGGLE -> SLOW" 
+                    - switch.turn_off: fastmotor 
+                    - switch.turn_off: lamp      
+                    - delay: 50ms      
+                    - switch.turn_on: slowmotor                         
+                  else:           
+                    - logger.log: "LOGIC: TOGGLE -> FAST" 
+                    - switch.turn_off: slowmotor
+                    - delay: 50ms
+                    - switch.turn_on: fastmotor             
+                    - switch.turn_on: lamp
 
-        - if:
-            condition:
-              - and: 
-                - switch.is_on: stop
-            then:
-              - logger.log: "SLOW MODE" 
-              - switch.turn_off: fastmotor 
-              - switch.turn_off: led   
-              - switch.turn_off: lamp   
-              - logger.log: "LAMP OFF STOP MODE"         
-              - switch.turn_on: slowmotor                         
-              - switch.turn_off: stop
+text_sensor:
+  - platform: debug
+    reset_reason:
+      name: "Reset Reason"
 
-
-#d1/gpio5 d2/gpio4 best for relays
 switch:
   - platform: gpio
     name: "Fast Motor"
     id: fastmotor
-    pin: GPIO4 #d2
+    pin: GPIO4
     interlock: [slowmotor]
+    on_turn_on:
+      - logger.log: "Hardware: Fast Motor ON"
  
   - platform: gpio
     name: "Slow Motor"
     id: slowmotor
-    pin: GPIO5 #d1
+    pin: GPIO5
     interlock: [fastmotor]
+    on_turn_on:
+      - logger.log: "Hardware: Slow Motor ON"
 
-  - platform: gpio #onboard led
+  - platform: gpio
     id: led
     pin: GPIO2
     inverted: true
@@ -91,94 +155,40 @@ switch:
     id: stop
     optimistic: true
     internal: True
-    #pin: GPIO12 #DUMMY SW
 
   - platform: gpio
     id: lamp
     name: "Lamp Fast"
-    pin: GPIO14 #D5 OUT TO INDICATOR LAMP
+    pin: GPIO14
 
 number:
-#test numbers
   - platform: template
-    name: "debounce on time"
+    name: "Debounce On Time"
     id: debounce_on_time
-    min_value: 10
-    max_value: 500
+    min_value: 50
+    max_value: 250
     step: 5
-    initial_value: 75
+    initial_value: 50
     optimistic: true
     restore_value: true
     unit_of_measurement: "ms"
     mode: slider
 
   - platform: template
-    name: "debounce off time"
+    name: "Debounce Off Time"
     id: debounce_off_time
-    min_value: 10
-    max_value: 500
+    min_value: 50
+    max_value: 250
     step: 5
-    initial_value: 75
+    initial_value: 50
     optimistic: true
     restore_value: true
     unit_of_measurement: "ms"
     mode: slider
-
-esphome:
-  name: leslie-flip-flop-footswitch
-  friendly_name: Leslie Flip Flop footswitch
-  on_boot:
-    then:  
-      - wifi.disable:
-      - switch.turn_on: slowmotor
-      - switch.turn_off: fastmotor
-      - switch.turn_off: led
-      # flash lamp 5 times so we know the ESP is working
-      - switch.turn_on: lamp
-      - delay: 0.5s           
-      - switch.turn_off: lamp  
-      - delay: 0.5s           
-      - switch.turn_on: lamp
-      - delay: 0.5s           
-      - switch.turn_off: lamp  
-      - delay: 0.5s           
-      - switch.turn_on: lamp
-      - delay: 0.5s           
-      - switch.turn_off: lamp  
-      - delay: 0.5s           
-      - switch.turn_on: lamp
-      - delay: 0.5s           
-      - switch.turn_off: lamp  
-      - delay: 0.5s  
-      - switch.turn_on: lamp
-      - delay: 0.5s           
-      - switch.turn_off: lamp  
-      - delay: 0.5s  
-
-esp8266:
-   board: esp01_1m
-logger:
-
-# Enable Home Assistant API
-api:
-
-
-ota:
-  - platform: esphome
-
-web_server:
-  local: True
-
-wifi:
-  #enable_on_boot: false
-  reboot_timeout: 0s
-  ssid:  !secret wifi_ssid
-  password: !secret wifi_password
-
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ap_timeout: 10s
-    ssid: "Leslie-Flip-Flop-Footswitch"
-    password: !secret wifi_password
-
-captive_portal:    
+    
+sensor:
+  - platform: debug
+    free:
+      name: "Heap Free"
+    fragmentation:
+      name: "Heap Fragmentation"
