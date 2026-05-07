@@ -5,11 +5,13 @@ Leslie Dual Motor foot switch speed control
 
 <img width="200" alt="image" src="https://github.com/user-attachments/assets/5ffa6505-e3ad-4f38-842d-050278efdd07"> <img  width="300" alt="image" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Lesliebox_Animation.gif?20070728184739">
 
-I love Leslies.  I've had dozens of them over the years.  My favs are the 146's and 122's, and the 46w is equally good.  But....  to control them, I like a momentary on/off foot switch that varies the speed and also stops the motors completely - like on My Hammond XK5 and Leslie 3300.  I know, I know.  Clonewheel + new Leslie.  The sound is close, but not ideal.  So I need to add another REAL leslie to the picture.  And, Ideally, one that allows the OFF function to stop both motors. Jimmy McGriff and other artists used the OFF function on the Leslie to great effect.  So, how do we do this?  I started experimenting with a 555 timer circuit that "sort of worked", but when I hooked up a highly inductive load like a leslie motor to the miniture relay, all hell broke loose. I couldnt mitigate the interference.   Not to mention the loud CLICK of the typical relay. 
+I love Leslies.  I've had dozens of them over the years.  My favs are the 146's and 122's, and the 46w is equally good. Ive also converted several from single tondualspeec.
+
+But....  to control them, I like using a momentary on/off foot switch that varies the speed and also stops the motors completely - like I can do on My Hammond XK5 and Leslie 3300.  I know, I know.  Clonewheel + new Leslie.  The sound is close, but not ideal.  So I need to add another REAL leslie to the picture.  And, Ideally, one that allows the OFF function to stop both motors. Jimmy McGriff and other artists used the OFF function on the Leslie to great effect.  So, how do we do this?  I started experimenting with a 555 timer circuit that "sort of worked", but when I hooked up a highly inductive load like a leslie motor to the miniture relay, all hell broke loose. I couldnt mitigate the RFI interference.   Not to mention the noticable CLICK of the typical relay. 
 
 so, How do we get rid of the mechanical relay for totally silent speed switching, and add reliable slow/fast AND OFF switching?  Read on.
 
-Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind for my Lslies at the time, I just didnt know what until now.  What if I used a programmable micro controller like a cheap, readily available ESP8266 and then programmed it with ESPHome to enable full control of the motors?  OK... But... What about Inductive interference from the motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's through clever programming.  OK let's try it!
+Several years ago, I purchased a solid state AC relay module that is controlled with 5VDC signal.  Clearly I had something in mind for my Lslies at the time, I just didnt know what until now.  What if I used a programmable micro controller like a cheap, readily available ESP8266 and then programmed it to enable full control of the motors?  OK... But... What about Inductive interference from the motors like on the 555 circuit?   I can absolutely mitigate that with debouncing logic on the GPIO's through clever programming.  OK let's try it!
 
 So, I wired it up, added a 3.3v to 5v level shifter to the outputs, and I noticed immediatly that even w/ the level shifter, the outputs both needed to be pulled up to 5v w/ 100 ohm resistors so the solid state relay would trigger when the GPIO's go high.  When the GPIO is low, at 1.2v 100 ohm 0.25w resistors will have to sink 0.012A. 0.012A  * 1.2v = 0.012w.  No problem.
 
@@ -56,10 +58,9 @@ script:
             - switch.turn_off: slowmotor
 ```
 several other mods in the config file mitigate having no Wifi and setting startup speeds upon boot, etc.  
-Good thing I've got loads of ESPHome experience w/ my Pellet stove! 
-So, there you have it.  
 
-A footswitch enabled 2 speed Solid State Leslie motor controller. With stop function.  Open Source.
+Good thing I've got loads of ESPHome experience w/ my Pellet stove! 
+So, there you have it.  A footswitch enabled 2 speed Solid State Leslie motor controller. With stop function.  Open Source.
 Enjoy!
 
 Link to the SainSmart 5V 2-Channel Solid State Relay Board controlled with 5v
