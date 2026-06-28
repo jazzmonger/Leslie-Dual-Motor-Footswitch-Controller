@@ -1,5 +1,7 @@
 Leslie Dual Motor foot switch speed control
 
+Use in conjunction with Leslie MIDI controller https://github.com/jazzmonger/Leslie-MIDI-Controller/blob/main/README.md
+
 ![image](https://github.com/user-attachments/assets/01bef3c2-a474-4144-9130-0a6561636c59)
 
 
